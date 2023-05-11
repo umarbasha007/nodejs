@@ -5,14 +5,9 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-//API
-app.get("/",(req, res) => {
-    res.status(200).json({ message : "Page is working."})
-});
+//Middleware - app.use()
 
-app.get("/home",(req, res) => {
-    res.status(200).json({ message : "This is a home page."})
-});
+app.use("/api/contacts", require("./routes/contactRoutes"));
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
